@@ -1,5 +1,4 @@
-
-###IMPORTANT: Please put your own email, app key password, and the email which you want to email or the code will not work. See Lines 17-19
+###IMPORTANT: Please put your own email, app key password, and the email which you want to email or the code will not work. See Lines 18-20
 
 import jetson_inference
 import jetson_utils
@@ -11,12 +10,14 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import smtplib
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
 import time
 
-EMAIL_FROM = '' ###Replace this with your email. Put it in the quotation marks.
-EMAIL_PASSWORD = '' ###Replace this with your app key password. Put it in the quotation marks.
-EMAIL_TO = '' ###Replace this email with email to local authorities or conservation organizations. Put it in the quotation marks.
+EMAIL_FROM = '' ###Replace this with your email
+EMAIL_PASSWORD = '' ###Replace this with your app key password(https://www.youtube.com/watch?v=hXiPshHn9Pw)
+EMAIL_TO = '' ###Replace this email with email to local authorities or conservation organizations
 
 def send_email(subject, message):
     try:
@@ -35,8 +36,22 @@ def send_email(subject, message):
     except Exception as e:
         print(f"Failed to send email: {e}")
 
+def send_multipart_email(message):
+    # Your email sending code here
+    # Here's a simple example using smtplib to send the email via SMTP.
+    smtp_server = "smtp.gmail.com"
+    smtp_port = 587
+    sender_email = EMAIL_FROM
+    receiver_email = EMAIL_TO
+    password = EMAIL_PASSWORD # For SMTP servers that require authentication
+
+    with smtplib.SMTP(smtp_server, smtp_port) as server:
+        server.starttls()
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message.as_string())
+
 def create_bar_chart(dates, counts):
-    plt.figure(figsize=(10, 6)) 
+    plt.figure(figsize=(10, 6))
     colors = cm.viridis(counts)
     plt.bar(dates, counts, color=colors, width=0.6)
     plt.xlabel('Date')
@@ -44,9 +59,8 @@ def create_bar_chart(dates, counts):
     plt.title('Monthly Lionfish Detection Counts')
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
-    plt.savefig('lionfish_detection_counts.png') 
+    plt.savefig('lionfish_detection_counts.png')
     plt.close()  
-
 
 def log_detection_data(filename, class_idx, confidence):
     with open("detection_data.txt", "a") as file:
@@ -70,12 +84,8 @@ def log_detection_data(filename, class_idx, confidence):
         for row in csvreader:
             counts[row["Date"]] = int(row["Count"])
 
-
-
     if class_desc.lower() == 'lionfish':
         counts[current_month_day] = counts.get(current_month_day, 0) + 1
-
-
 
     with open("lionfish_detection_counts.csv", "w", newline="") as csvfile:
         fieldnames = ["Date", "Count"]
@@ -84,12 +94,10 @@ def log_detection_data(filename, class_idx, confidence):
         for date, count in counts.items():
             csvwriter.writerow({"Date": date, "Count": count})
 
-
     # Create the bar chart and save it as a PNG file
     dates = list(counts.keys())
     counts = list(counts.values())
     create_bar_chart(dates, counts)
-
 
     # Display the counts in a tabular format
     print("\nDaily Lionfish Detection Counts:")
@@ -100,42 +108,20 @@ def log_detection_data(filename, class_idx, confidence):
             print("{} | {}".format(row["Date"], row["Count"]))
     print("-------------------------------")
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("filename", type=str, help="filename of the image to process")
 parser.add_argument("--network", type=str, default="resnet-18", help="model to use, can be: googlenet, resnet-18, etc. (see --help for others)")
 opt = parser.parse_args()
 
-
-
-
 img = jetson_utils.loadImage(opt.filename)
 net = jetson_inference.imageNet(opt.network)
 
-
-
-
 class_idx, confidence = net.Classify(img)
-
-
-
 
 class_desc = net.GetClassDesc(class_idx)
 print("Image is recognized as '{}' (class #{}) with {:.2f}% confidence".format(class_desc, class_idx, confidence * 100))
 
-
-
-
 log_detection_data(opt.filename, class_idx, confidence)
-
-
-
-
-
-
-
-
-
 
 # Display additional information for Lionfish detection
 if class_desc.lower() == 'lionfish':
@@ -147,32 +133,51 @@ if class_desc.lower() == 'lionfish':
 else:
     print("Found {}".format(class_desc.lower()))
 
-
 def send_daily_email():
-    with open("lionfish_detection_counts.csv", "r") as csvfile:
+     subject = "Daily Lionfish Count Report"
+     with open("lionfish_detection_counts.csv", "r") as csvfile:
         csvreader = csv.DictReader(csvfile)
         total_lionfish_spotted = 0
+        counts_table = []
         for row in csvreader:
-            total_lionfish_spotted += int(row["Count"])
+            date = row["Date"]
+            count = int(row["Count"])
+            total_lionfish_spotted += count
+            counts_table.append(f"{date} | {count}")
 
-        subject = "Daily Lionfish Count Report"
-        message = f"Total lionfish spotted today: {total_lionfish_spotted}."
-        send_email(subject, message)
+        message = MIMEMultipart()
+        message["Subject"] = subject
+        message.attach(MIMEText(f"Total lionfish spotted today: {total_lionfish_spotted}.\n\n"))
+        message.attach(MIMEText("Daily Lionfish Detection Counts:\n"))
+        message.attach(MIMEText("-------------------------------\n"))
+        message.attach(MIMEText("\n".join(counts_table)))
+        message.attach(MIMEText("\n-------------------------------"))
 
+        # Attach the PNG image
+        image_path = "lionfish_detection_counts.png"
+        with open(image_path, "rb") as img_file:
+         image = MIMEImage(img_file.read(), name="lionfish_detection_counts.png")
+        message.attach(image)
+
+        send_multipart_email(message)
 
 # Function to get the current time in seconds until midnight
-def seconds_until_midnight():
+def seconds_until_time(hour, minute):
     now = datetime.datetime.now()
-    tomorrow = now + datetime.timedelta(days=1)
-    midnight = datetime.datetime(year=tomorrow.year, month=tomorrow.month, day=tomorrow.day, hour=0, minute=0, second=0)
-    return int((midnight - now).total_seconds())
+    target_time = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
 
+    # If the target time has already passed for today, set it for tomorrow
+    if now >= target_time:
+        target_time += datetime.timedelta(days=1)
 
-# Send the daily email at 11:59 PM
+    return int((target_time - now).total_seconds())
+
+# Send the daily email at a specific time (e.g., 11:59 PM)
+desired_hour = 19  # Change this to the desired hour (0-23)
+desired_minute = 23  # Change this to the desired minute (0-59)
+
 while True:
-    time.sleep(seconds_until_midnight())  # Sleep until midnight
+    time.sleep(seconds_until_time(desired_hour, desired_minute))  # Sleep until the specified time
     send_daily_email()
-
-
 
 
