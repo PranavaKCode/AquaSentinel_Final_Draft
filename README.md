@@ -16,7 +16,7 @@ Emails:
 
 Email Code:![Email Code](https://i.imgur.com/He6y0ea.jpg) 
 
-Daily Email Code:![Daily Email Code](https://i.imgur.com/4VtMPvn.jpg)
+Daily Email Code(the time.sleep pauses the execution of the code until near midnight):![Daily Email Code](https://i.imgur.com/4VtMPvn.jpg)
 
 **Csv file: It keeps track of how much lionfish are detected per day and shows it in the csv file as well as the terminal**
 
@@ -29,7 +29,7 @@ A part of its code:
 **Bar graph for data analysis: The bar graph takes the date and count values and shows them in a presentable visual graph.**
 
 bar graph:![](https://i.imgur.com/mWEvP0M.jpg) 
-bar graph code:
+bar graph code(creates a bar graph and gives it values):
 
 ![](https://i.imgur.com/tjir5PX.jpg)
 
@@ -38,20 +38,23 @@ If it has detected a lionfish it says "**** Found 🦁🐟 Lion Fish 🦁🐟✅
 If it has detected something else resnet-18 knows it says "Found{class name}❌".**
 
 logs:![](https://i.imgur.com/mnbYiph.jpg)  
-One of the parts of the code:![](https://i.imgur.com/Nfyfbk6.jpg)
+One of the parts of the code(generates logs that are different based on whether it is a lionfish or not):![](https://i.imgur.com/Nfyfbk6.jpg)
 -s
 ## Running this project
 
 1. Add steps for running this project.
-   1. Log in to VsCode
-   2. Connect to nano via remote ssh host
-   3. Create a folder in vs code and name it(Ex. my-recognition)
-   4. Create the following files my_recognition.py, lionfish_detection_counts.csv, and detection_data.txt(lionfish_detection_counts.png will be automatically generated after running)
-   5. Type Date,Count into csv file and paste the my_recognition.py in github into your vscode file.
-   6. Run the following commands
+   
+   1. Create an email and get its app key password
+   2. Log in to VsCode
+   3. Connect to nano via remote ssh host
+   4. Create a folder in vs code and name it(Ex. my-recognition)
+   5. Create the following files my_recognition.py, lionfish_detection_counts.csv, and detection_data.txt(lionfish_detection_counts.png will be automatically generated after running)
+   6. fill out the def send_email(subject, message) function with your email, app key password, and the email(s) of local conservation organizations or authorities.
+   7. Type Date,Count into csv file and paste the my_recognition.py in github into your vscode file.
+   8. Run the following commands
       1. cd my-recognition
       2. python3 my_recognition.py (insert image name here and remove parenthesis).jpg  (Ex. 1Lionfish.jpg or Jellyfish.jpg)
-   7. The program shold work as intended.
+   9. The program shold work as intended.
 3. Make sure to include any required libraries that need to be installed for your project to run.
 
 All of these are default libraries that you dont need to install but need to use for the project to work
