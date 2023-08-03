@@ -1,3 +1,6 @@
+
+###IMPORTANT: Please put your own email, app key password, and the email which you want to email or the code will not work. See Lines 17-19
+
 import jetson_inference
 import jetson_utils
 import argparse
@@ -11,9 +14,9 @@ import smtplib
 from email.mime.text import MIMEText
 import time
 
-EMAIL_FROM = 'PranavaKCode@gmail.com' ###Replace this with your email
-EMAIL_PASSWORD = 'eutq wmed ppcv ygzg'
-EMAIL_TO = 'goodpranava@gmail.com' ###Replace this email with email to local authorities or conservation organizations
+EMAIL_FROM = '' ###Replace this with your email. Put it in the quotation marks.
+EMAIL_PASSWORD = '' ###Replace this with your app key password. Put it in the quotation marks.
+EMAIL_TO = '' ###Replace this email with email to local authorities or conservation organizations. Put it in the quotation marks.
 
 def send_email(subject, message):
     try:
