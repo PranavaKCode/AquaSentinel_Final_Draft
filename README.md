@@ -49,14 +49,14 @@ One of the parts of the code(generates logs that are different based on whether 
    2. Log in to VsCode
    3. Connect to nano via remote ssh host
    4. Create a folder in vs code and name it(Ex. my-recognition)
-   5. Create the following files my_recognition.py, lionfish_detection_counts.csv, and detection_data.txt(lionfish_detection_counts.png will be automatically generated after running)
-   6. fill out the def send_email(subject, message) function with your email, app key password, and the email(s) of local conservation organizations or authorities.
-   7. Type Date,Count into csv file and paste the my_recognition.py in github into your vscode file.
+   5. Create or Download from Aquasentinel github(url given at top of this doc) the following files my_recognition.py, lionfish_detection_counts.csv, and detection_data.txt(lionfish_detection_counts.png will be automatically generated after running)
+   6. fill out the def send_email(subject, message) function in the my_recognition.py with your email, app key password, and the email(s) of local conservation organizations or authorities.
+   7. Type Date,Count into lionfish_detection_counts.csv(ignore if already there) file and paste the my_recognition.py(or drag and drop the files dowloaded) in github into your vscode file.
    8. Run the following commands
       1. cd my-recognition
-      2. python3 my_recognition.py (insert image name here and remove parenthesis).jpg  (Ex. 1Lionfish.jpg or Jellyfish.jpg)
-   9. The program shold work as intended.
-3. Make sure to include any required libraries that need to be installed for your project to run.
+      2. python3 my_recognition.py (insert image name here and remove parenthesis).jpg  (e.g. python3 my_recognition.py 1Lionfish.jpg)
+   9. The program should work as intended.
+2. Make sure to include any required libraries that need to be installed for your project to run.
 
 All of these are default libraries that you dont need to install but need to use for the project to work
 
