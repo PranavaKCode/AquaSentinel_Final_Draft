@@ -13,7 +13,7 @@ Here are its following functions:
 **Email Sending: It can send emails to marine conservation teams, local authorities, or volunteers as soon as a lionfish is detected as well as a daily report of how many lionfish were detected on that day using the smtplib and time libraries.(Currently only sends an email to myself as to not false report.)**
 
 Emails:
-![Emails:](https://i.imgur.com/QPTAUwD.jpg) (Daily report  only works when running at 11:59 so no image) 
+![Emails:](https://i.imgur.com/QPTAUwD.jpg) (Daily batch report only works when running at 11:59 pm. Since I wasn't active at 11:59 pm I could not attach that image.) 
 
 Email Code:![Email Code](https://i.imgur.com/mpd8aBB.jpg) 
 
