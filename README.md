@@ -14,7 +14,7 @@ Here are its following functions:
 Emails:
 ![Emails:](https://i.imgur.com/QPTAUwD.jpg) (Daily report  only works when running at 11:59 so no image) 
 
-Email Code:![Email Code](https://i.imgur.com/He6y0ea.jpg) 
+Email Code:![Email Code](https://i.imgur.com/mpd8aBB.jpg) 
 
 Daily Email Code(the time.sleep pauses the execution of the code until near midnight):![Daily Email Code](https://i.imgur.com/4VtMPvn.jpg)
 
