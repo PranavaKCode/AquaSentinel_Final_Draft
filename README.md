@@ -54,7 +54,7 @@ One of the parts of the code(generates logs that are different based on whether 
 
 1. **Steps For Running this project**
    
-   1. Create an email and get its app key password[(https://www.youtube.com/watch?v=hXiPshHn9Pw](url))
+   1. Create an email and get its app key password. [Video showing how to get app key password](https://www.youtube.com/watch?v=hXiPshHn9Pw)
    2. Log in to VsCode
    3. Connect to nano via remote ssh host
    4. Create a folder in vs code and name it(Ex. my-recognition)
