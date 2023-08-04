@@ -142,7 +142,7 @@ def send_daily_email():
         for row in csvreader:
             date = row["Date"]
             count = int(row["Count"])
-            total_lionfish_spotted += count
+            total_lionfish_spotted = count
             counts_table.append(f"{date} | {count}")
 
         message = MIMEMultipart()
@@ -161,7 +161,7 @@ def send_daily_email():
 
         send_multipart_email(message)
 
-# Function to get the current time in seconds until midnight
+# Function to get the current time in seconds until 
 def seconds_until_time(hour, minute):
     now = datetime.datetime.now()
     target_time = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
@@ -172,12 +172,10 @@ def seconds_until_time(hour, minute):
 
     return int((target_time - now).total_seconds())
 
-# Send the daily email at a specific time (e.g., 11:59 PM)
-desired_hour = 19  # Change this to the desired hour (0-23)
-desired_minute = 23  # Change this to the desired minute (0-59)
+# Send the daily email at a specific time (e.g., 11:59 PM)(It is in 24 hour time)
+desired_hour = 12  # Change this to the desired hour (0-23)
+desired_minute = 17  # Change this to the desired minute (0-59)
 
 while True:
     time.sleep(seconds_until_time(desired_hour, desired_minute))  # Sleep until the specified time
     send_daily_email()
-
-
