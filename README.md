@@ -85,11 +85,11 @@ from email.mime.text import MIMEText
 
 import time
 ## Miscellaneous Resources
-[https://www.w3schools.com/python/default.asp
+[https://www.w3schools.com/python/default.asp](url)
 
-https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-console-2.md
+[https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-console-2.md](url)
 
-https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-example-python-2.md](url)
+[https://github.com/dusty-nv/jetson-inference/blob/master/docs/imagenet-example-python-2.md](url)
 ## Video Explanation
 
 [View a video explanation here](https://www.youtube.com/watch?v=RJb2n-2TQB0)
