@@ -52,7 +52,7 @@ One of the parts of the code(generates logs that are different based on whether 
 -s
 ## Running this project
 
-1. Add steps for running this project.
+1. **Steps For Running this project**
    
    1. Create an email and get its app key password[(https://www.youtube.com/watch?v=hXiPshHn9Pw](url))
    2. Log in to VsCode
@@ -60,12 +60,12 @@ One of the parts of the code(generates logs that are different based on whether 
    4. Create a folder in vs code and name it(Ex. my-recognition)
    5. Create or Download from Aquasentinel github(url given at top of this doc) the following files my_recognition.py, lionfish_detection_counts.csv, and detection_data.txt(lionfish_detection_counts.png will be automatically generated after running)
    6. fill out the def send_email(subject, message) function in the my_recognition.py with your email, app key password, and the email(s) of local conservation organizations or authorities.
-   7. Type Date,Count into lionfish_detection_counts.csv(ignore if already there) file and paste the my_recognition.py(or drag and drop the files dowloaded) in github into your vscode file.
+   7. Type Date,Count into lionfish_detection_counts.csv(ignore if already there) file and paste the files from step 5(or drag and drop the files dowloaded) in github into your vscode folder.
    8. Run the following commands
-      1. cd my-recognition
+      1. cd my-recognition(or whatever the name of your folder is)
       2. python3 my_recognition.py (insert image name here and remove parenthesis).jpg  (e.g. python3 my_recognition.py 1Lionfish.jpg)
-   9. The program should work as intended.
-2. Make sure to include any required libraries that need to be installed for your project to run.
+   9. Enjoy the program!
+2. **Libraries used in my project**
 
 All of these are default libraries that you dont need to install but need to use for the project to work
 
@@ -85,4 +85,4 @@ from email.mime.text import MIMEText
 
 import time
 
-[View a video explanation here](video link)
+[View a video explanation here](https://www.youtube.com/watch?v=RJb2n-2TQB0)
