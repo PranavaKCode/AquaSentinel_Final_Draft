@@ -1,4 +1,4 @@
-# AquaSentinel
+# AquaSentinel - Lionfish Detector and Data Collector
 [https://github.com/PranavaKCode/AquaSentinel_Final_Draft.git](url)
 
 [Video Demonstration](https://www.youtube.com/watch?v=RJb2n-2TQB0)
