@@ -17,10 +17,13 @@ Emails:
 
 Email Code:![Email Code](https://i.imgur.com/mpd8aBB.jpg) 
 
-Daily Email:![image](https://github.com/PranavaKCode/AquaSentinel_Rough_Draft/assets/126040433/45d27a3b-70af-4f3b-931d-cf695cf902da)
+Daily Email:
+
+![image](https://github.com/PranavaKCode/AquaSentinel_Rough_Draft/assets/126040433/45d27a3b-70af-4f3b-931d-cf695cf902da)
 
 
-Daily Email Code Runs at a specific time every day:![Daily Email Code](https://i.imgur.com/4VtMPvn.jpg)
+Daily Email Code Runs at a specific time every day:![image](https://github.com/PranavaKCode/AquaSentinel_Rough_Draft/assets/126040433/9f76b89d-46fc-46ca-b33e-e2b03e727eab)
+
 
 **Csv file: It keeps track of how much lionfish are detected per day and shows it in the csv file as well as the terminal**
 
