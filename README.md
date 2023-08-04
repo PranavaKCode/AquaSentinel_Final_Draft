@@ -1,6 +1,8 @@
 # AquaSentinel
 [https://github.com/PranavaKCode/AquaSentinel_Rough_Draft.git](url)
 
+[Video Demonstration](https://www.youtube.com/watch?v=RJb2n-2TQB0)
+
 AquaSentinel is an AI Object Detection project that combats the threat of Lionfish invasion in the Caribbean. 
 Using Imagenet, resnet-18, and a complex custom image classification program it accurately identifies Lionfish even in challenging underwater conditions and can alert marine conservation teams, local authorities, or volunteers instantly via email. 
 It also collects data on lionfish such as how much lionfish were detected each day, a bar graph to show that in a visual format, and logs that show the timestamp, class, image, and more data.
