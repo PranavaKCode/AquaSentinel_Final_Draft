@@ -92,3 +92,8 @@ import time
 ## Video Explanation
 
 [View a video explanation here](https://www.youtube.com/watch?v=RJb2n-2TQB0)
+
+#Licensing
+
+    AquaSentinel  © 2023 by Pranava Kumar is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0/
+
